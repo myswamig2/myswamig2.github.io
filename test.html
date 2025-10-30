@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>SwamiG Test Form</title>
+  <style>
+    body {
+      background:#0b0b0f; color:#f4f4fa; font-family:ui-sans-serif,system-ui,Segoe UI,Roboto,Arial;
+      display:flex; flex-direction:column; align-items:center; justify-content:center;
+      height:100vh; margin:0;
+    }
+    form {
+      background:#11131a; padding:30px; border-radius:12px; width:90%; max-width:360px;
+      box-shadow:0 0 20px rgba(0,0,0,.3);
+    }
+    label { display:block; margin-bottom:10px; font-weight:600; }
+    input {
+      width:100%; padding:10px; border-radius:8px; border:1px solid #333;
+      background:#0f1118; color:#fff;
+    }
+    button {
+      margin-top:18px; padding:10px 16px; width:100%;
+      background:#bb66ff; border:0; border-radius:8px;
+      color:#10081a; font-weight:bold; cursor:pointer;
+    }
+    #msg { margin-top:15px; font-size:14px; }
+    .ok { color:#7affb7; }
+    .err { color:#ff8080; white-space:pre-wrap; }
+  </style>
+</head>
+<body>
+  <form id="test-form">
+    <h2>SwamiG Test Email Form</h2>
+    <label for="email">Enter your email</label>
+    <input type="email" id="email" name="email" required placeholder="you@example.com">
+    <button type="submit">Send Test</button>
+    <div id="msg"></div>
+  </form>
+
+  <script>
+    const form = document.getElementById('test-form');
+    const msg = document.getElementById('msg');
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      msg.textContent = '';
+      const email = form.email.value.trim();
+      if(!email) { msg.textContent = 'Please enter an email.'; return; }
+
+      const payload = { email };
+      msg.textContent = 'Sending...';
+
+      try {
+        const resp = await fetch('https://swamiginstitute.com/api/application', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(payload),
+        });
+        const data = await resp.json().catch(() => ({}));
+
+        if (resp.ok && (data.success || resp.status === 200)) {
+          msg.innerHTML = '<span class="ok">✅ Email sent successfully!</span>';
+          form.reset();
+        } else {
+          msg.innerHTML = '<span class="err">❌ Error: ' + (data.details || data.error || resp.statusText) + '</span>';
+        }
+      } catch (err) {
+        msg.innerHTML = '<span class="err">Network error: ' + err.message + '</span>';
+      }
+    });
+  </script>
+</body>
+</html>
