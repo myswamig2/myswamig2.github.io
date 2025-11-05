@@ -6,18 +6,20 @@
   <title>SwamiG Test Form</title>
   <style>
     body {
-      background:#0b0b0f; color:#f4f4fa; font-family:ui-sans-serif,system-ui,Segoe UI,Roboto,Arial;
+      background:#0b0b0f; color:#f4f4fa;
+      font-family:ui-sans-serif,system-ui,Segoe UI,Roboto,Arial;
       display:flex; flex-direction:column; align-items:center; justify-content:center;
       height:100vh; margin:0;
     }
     form {
-      background:#11131a; padding:30px; border-radius:12px; width:90%; max-width:360px;
+      background:#11131a; padding:30px; border-radius:12px;
+      width:90%; max-width:360px;
       box-shadow:0 0 20px rgba(0,0,0,.3);
     }
     label { display:block; margin-bottom:10px; font-weight:600; }
     input {
-      width:100%; padding:10px; border-radius:8px; border:1px solid #333;
-      background:#0f1118; color:#fff;
+      width:100%; padding:10px; border-radius:8px;
+      border:1px solid #333; background:#0f1118; color:#fff;
     }
     button {
       margin-top:18px; padding:10px 16px; width:100%;
@@ -46,28 +48,35 @@
       e.preventDefault();
       msg.textContent = '';
       const email = form.email.value.trim();
-      if(!email) { msg.textContent = 'Please enter an email.'; return; }
+      if (!email) {
+        msg.textContent = 'Please enter an email.';
+        return;
+      }
 
       const payload = { email };
       msg.textContent = 'Sending...';
 
       try {
-        const resp = await fetch''   fetch('https://swamig-application.fasuuruate.workers.dev/', { ... })
-   'https', {
+        const resp = await fetch('https://swamig-application.fasuuruate.workers.dev/', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify(payload),
         });
+
         const data = await resp.json().catch(() => ({}));
 
         if (resp.ok && (data.success || resp.status === 200)) {
           msg.innerHTML = '<span class="ok">✅ Email sent successfully!</span>';
           form.reset();
         } else {
-          msg.innerHTML = '<span class="err">❌ Error: ' + (data.details || data.error || resp.statusText) + '</span>';
+          msg.innerHTML =
+            '<span class="err">❌ Error: ' +
+            (data.details || data.error || resp.statusText) +
+            '</span>';
         }
       } catch (err) {
-        msg.innerHTML = '<span class="err">Network error: ' + err.message + '</span>';
+        msg.innerHTML =
+          '<span class="err">Network error: ' + err.message + '</span>';
       }
     });
   </script>
