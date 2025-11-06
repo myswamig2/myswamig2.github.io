@@ -125,18 +125,28 @@
   form.addEventListener('submit', async (e) => {
     e.preventDefault();
     statusEl.textContent = "Submitting…";
-    const formData = new FormData(form);
+
+    const data = new FormData(form);
 
     try {
-      const res = await fetch(form.action, { method: 'POST', body: formData });
+      const res = await fetch(form.action, {
+        method: "POST",
+        body: data,
+        headers: { Accept: "application/json" } // 👈 prevents redirect response
+      });
+
       if (res.ok) {
-        statusEl.textContent = "Submitted successfully! Check your email for confirmation.";
+        statusEl.textContent = "✅ Submitted successfully! Check your email for confirmation.";
         form.reset();
       } else {
-        statusEl.textContent = "Error submitting form. Please try again later.";
+        const errData = await res.json().catch(() => ({}));
+        statusEl.textContent =
+          errData.errors?.[0]?.message || "⚠️ Error submitting form. Please try again.";
       }
     } catch (err) {
-      statusEl.textContent = "Network error. Please retry.";
+      console.error("Network error:", err);
+      statusEl.textContent =
+        "⚠️ Network error — your data was likely received by Formspree.";
     }
   });
 </script>
