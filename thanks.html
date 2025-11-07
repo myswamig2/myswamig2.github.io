@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Thank You — SwamiG Institute</title>
+  <meta name="description" content="Thank you for submitting your application to SwamiG Institute. Ifá • Ìṣèṣe • Òrìṣà | Divination & Certification Training." />
+  <meta name="color-scheme" content="dark light" />
+  <style>
+    :root {
+      --bg:#0b0b0f;
+      --ink:#f3f4f6;
+      --muted:#bfc3d1;
+      --card:#14141c;
+      --soft:#1b1b25;
+      --accent:#bb66ff;
+      --accent-2:#ffd166;
+      --ring:rgba(187,102,255,.35);
+      --glow:0 0 14px rgba(187,102,255,.4);
+    }
+
+    body{
+      background:var(--bg);
+      color:var(--ink);
+      font-family:ui-sans-serif,system-ui,Segoe UI,Roboto,Arial;
+      margin:0;
+      display:flex;
+      flex-direction:column;
+      min-height:100vh;
+      overflow-x:hidden;
+    }
+
+    header{
+      text-align:center;
+      padding:32px 12px 16px;
+    }
+    header img{
+      width:70px;height:70px;
+    }
+    header h1{
+      margin:10px 0 4px;
+      font-size:1.75rem;
+      color:var(--accent);
+    }
+    header p{
+      margin:0;
+      color:var(--muted);
+      font-size:0.95rem;
+    }
+
+    .top-cards{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(150px,1fr));
+      gap:14px;
+      max-width:900px;
+      margin:0 auto 36px;
+      padding:0 12px;
+    }
+    .card{
+      background:var(--card);
+      border-radius:16px;
+      padding:16px 12px;
+      text-align:center;
+      box-shadow:0 0 8px rgba(0,0,0,.25);
+      border:1px solid var(--soft);
+      transition:all .25s;
+    }
+    .card:hover{
+      transform:translateY(-4px);
+      box-shadow:var(--glow);
+    }
+    .card a{
+      color:var(--accent-2);
+      font-weight:600;
+      text-decoration:none;
+      font-size:1rem;
+    }
+
+    main{
+      flex:1;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      padding:20px;
+    }
+
+    /* ✨ Fade-in animation */
+    @keyframes fadeUp {
+      0% { opacity:0; transform:translateY(30px); }
+      100% { opacity:1; transform:translateY(0); }
+    }
+
+    .message-box{
+      background:var(--card);
+      border-radius:20px;
+      padding:40px 36px;
+      max-width:540px;
+      text-align:center;
+      box-shadow:0 0 25px rgba(0,0,0,.35);
+      opacity:0;
+      animation:fadeUp 1.2s ease-out forwards;
+    }
+
+    .message-box h2{
+      color:var(--accent);
+      font-size:1.9rem;
+      margin-bottom:10px;
+    }
+    .message-box p{
+      color:var(--muted);
+      font-size:1rem;
+      margin-bottom:22px;
+      line-height:1.6;
+    }
+    .message-box a{
+      display:inline-block;
+      background:var(--accent);
+      color:#fff;
+      text-decoration:none;
+      padding:10px 22px;
+      border-radius:10px;
+      font-weight:600;
+      transition:opacity .2s;
+    }
+    .message-box a:hover{opacity:.85;}
+
+    footer{
+      text-align:center;
+      font-size:0.75rem;
+      color:rgba(255,255,255,0.06);
+      margin:10px 0 8px;
+      user-select:none;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <a href="https://swamiginstitute.com" title="SwamiG Institute">
+      <img src="../SwamiG.gif" alt="SwamiG Institute logo">
+      <h1>SwamiG Institute</h1>
+    </a>
+    <p>Modules of Enlightenment for the Diaspora</p>
+    <p>Ifá • Ìṣèṣe • Òrìṣà | Divination Certification-Oriented Training</p>
+  </header>
+
+  <div class="top-cards">
+    <div class="card"><a href="https://swamiginstitute.com/mission">Mission</a></div>
+    <div class="card"><a href="https://swamiginstitute.com/divination">Divination</a></div>
+    <div class="card"><a href="https://swamiginstitute.com/ilekes">Ilekes</a></div>
+    <div class="card"><a href="https://swamiginstitute.com/warriors">Warriors</a></div>
+    <div class="card"><a href="https://swamiginstitute.com/initiation">Initiation</a></div>
+    <div class="card"><a href="https://swamiginstitute.com/certification">Certification</a></div>
+  </div>
+
+  <main>
+    <div class="message-box">
+      <h2>Thank You!</h2>
+      <p>Your application has been received successfully.<br>
+      Our coordinators will review it and contact you shortly.</p>
+      <a href="https://swamiginstitute.com">Return to Home</a>
+    </div>
+  </main>
+
+  <footer>
+    Governed by Ìròsùn-Òtúrá
+  </footer>
+</body>
+</html>
