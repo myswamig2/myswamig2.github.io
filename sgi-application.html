@@ -1,152 +1,78 @@
-<!-- SwamiG Institute Application Form (Formspree Integrated) -->
-<section id="orisha-application" style="max-width:840px;margin:40px auto;padding:28px;border:1px solid #e5e7eb;border-radius:16px;font-family:ui-sans-serif,system-ui,Segoe UI,Roboto,Arial;">
-  <div class="wrap" style="text-align:center;margin-bottom:20px;">
-    <a href="https://swamiginstitute.com" title="app@swamiginstitute.com" style="text-decoration:none;color:inherit;">
-      <img src="SwamiG.gif" width="70" height="70" alt="SwamiG Institute" />
-      <h1 style="margin:10px 0 0;">SwamiG Institute</h1>
-    </a>
-    <p style="margin:0;color:#475569;">Modules of Enlightenment for the Diaspora</p>
-    <p style="color:#64748b;">Ifá • Ise'se' • Orisha | Divination Certification-oriented training</p>
-  </div>
-
-  <h2 style="margin:0 0 8px;font-size:28px;line-height:1.2;">Application</h2>
-  <p style="margin:0 0 18px;color:#475569;">Complete this application to begin. Submissions are securely delivered and logged.</p>
-
-  <form id="sgi-app" action="https://formspree.io/f/mvgvwkye" method="POST">
-    <!-- Contact -->
-    <div style="display:grid;gap:14px;grid-template-columns:1fr 1fr;">
-      <label style="display:flex;flex-direction:column;gap:6px;">
-        <span>Legal name <b style="color:#ef4444">*</b></span>
-        <input name="legal_name" required placeholder="First Last" autocomplete="name" style="padding:10px;border:1px solid #cbd5e1;border-radius:10px;">
-      </label>
-
-      <label style="display:flex;flex-direction:column;gap:6px;">
-        <span>Preferred name with meaning</span>
-        <input name="preferred_name" placeholder="If different" style="padding:10px;border:1px solid #cbd5e1;border-radius:10px;">
-      </label>
-
-      <label style="display:flex;flex-direction:column;gap:6px;">
-        <span>Email <b style="color:#ef4444">*</b></span>
-        <input name="email" type="email" required placeholder="you@example.com" autocomplete="email" style="padding:10px;border:1px solid #cbd5e1;border-radius:10px;">
-      </label>
-
-      <label style="display:flex;flex-direction:column;gap:6px;">
-        <span>Phone (WhatsApp ok)</span>
-        <input name="phone" placeholder="+1 (___) ___-____" autocomplete="tel" style="padding:10px;border:1px solid #cbd5e1;border-radius:10px;">
-      </label>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>SwamiG Institute — Application Form</title>
+  <style>
+    body {
+      font-family: ui-sans-serif, system-ui, Segoe UI, Roboto, Arial;
+      background: #0b0b0f; color: #f4f4fa; margin: 0; padding: 40px;
+    }
+    section {
+      max-width: 840px; margin: auto; padding: 28px;
+      background: #11131a; border-radius: 16px; border: 1px solid #2f3240;
+      box-shadow: 0 0 18px rgba(0,0,0,0.3);
+    }
+    h1, h2, p { text-align: center; margin: 0.4em 0; }
+    label { display: block; margin-top: 18px; }
+    input, select, textarea {
+      width: 100%; padding: 10px; border-radius: 10px;
+      border: 1px solid #333; background: #0f1118; color: #fff;
+    }
+    button {
+      margin-top: 25px; padding: 12px 22px; border: none;
+      border-radius: 10px; background: #bb66ff; color: #fff;
+      font-size: 16px; cursor: pointer;
+    }
+    button:hover { opacity: 0.9; }
+  </style>
+</head>
+<body>
+  <section id="orisha-application">
+    <div style="text-align:center;margin-bottom:20px;">
+      <img src="SwamiG.gif" width="70" height="70" alt="SwamiG Institute">
+      <h1>SwamiG Institute</h1>
+      <p>Modules of Enlightenment for the Diaspora</p>
+      <p>Ifá • Isese • Orisha | Divination Certification Training</p>
     </div>
 
-    <!-- Initiation details -->
-    <div style="display:grid;gap:14px;grid-template-columns:1fr 1fr;margin-top:14px;">
-      <label style="display:flex;flex-direction:column;gap:6px;">
-        <span>Initiation role <b style="color:#ef4444">*</b></span>
-        <select name="role" required style="padding:10px;border:1px solid #cbd5e1;border-radius:10px;">
-          <option value="" selected disabled>Choose…</option>
-          <option>Oba</option>
-          <option>Queen Mother</option>
-          <option>Babalawo</option>
-          <option>Iyanifa</option>
-          <option>Babalorisa</option>
-          <option>Iyalorisa</option>
-          <option>Aborisha</option>
-          <option>Other</option>
+    <form action="https://swamig-application.fasuuruate.workers.dev/" method="POST" accept-charset="utf-8">
+      <h2>Application Form</h2>
+
+      <label>Legal Name
+        <input name="legal_name" required>
+      </label>
+
+      <label>Preferred Name (with meaning)
+        <input name="preferred_name" placeholder="If different">
+      </label>
+
+      <label>Email <b style="color:#ef4444">*</b>
+        <input name="email" type="email" required placeholder="you@example.com">
+      </label>
+
+      <label>Program / Module Interest
+        <select name="program" required>
+          <option value="">Select One</option>
+          <option>Obi Orisha</option>
+          <option>Four Cowrie</option>
+          <option>Orisha-Pele</option>
+          <option>Merindilogun</option>
+          <option>Custom / Other</option>
         </select>
       </label>
 
-      <label style="display:flex;flex-direction:column;gap:6px;">
-        <span>Primary Orisha</span>
-        <input name="primary_orisha" placeholder="e.g., Oshun, Shàngó, Obatala" style="padding:10px;border:1px solid #cbd5e1;border-radius:10px;">
+      <label>Additional Notes or Questions
+        <textarea name="notes" rows="4" placeholder="Tell us about your goals or experience"></textarea>
       </label>
 
-      <label style="display:flex;flex-direction:column;gap:6px;">
-        <span>Lineage / Ile <b style="color:#ef4444">*</b></span>
-        <input name="lineage" required placeholder="House / Ile" style="padding:10px;border:1px solid #cbd5e1;border-radius:10px;">
-      </label>
+      <button type="submit">Submit Application</button>
+    </form>
 
-      <label style="display:flex;flex-direction:column;gap:6px;">
-        <span>Oluwo / Iyalo/Oba name/ Teacher</span>
-        <input name="teacher" placeholder="Name(s)" style="padding:10px;border:1px solid #cbd5e1;border-radius:10px;">
-      </label>
-
-      <label style="display:flex;flex-direction:column;gap:6px;">
-        <span>Initiation date</span>
-        <input name="initiation_date" type="date" style="padding:10px;border:1px solid #cbd5e1;border-radius:10px;">
-      </label>
-
-      <label style="display:flex;flex-direction:column;gap:6px;">
-        <span>Initiation location</span>
-        <input name="initiation_location" placeholder="City, Country" style="padding:10px;border:1px solid #cbd5e1;border-radius:10px;">
-      </label>
-    </div>
-
-    <!-- Study Interests -->
-    <fieldset style="margin-top:14px;border:1px solid #e2e8f0;border-radius:12px;padding:12px;">
-      <legend style="padding:0 6px;color:#334155;">Study interests</legend>
-      <div style="display:grid;gap:10px;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));">
-        <label><input type="checkbox" name="study_interests" value="Merindilogun"> Merindilogun</label>
-        <label><input type="checkbox" name="study_interests" value="Orisha-Pele"> Orisha-Pele</label>
-        <label><input type="checkbox" name="study_interests" value="Obi-Orisha"> Obi Orisha</label>
-        <label><input type="checkbox" name="study_interests" value="Obi Abata"> Obi Abata</label>
-        <label><input type="checkbox" name="study_interests" value="Four Cowrie"> Four Cowrie</label>
-        <label><input type="checkbox" name="study_interests" value="Card Divination"> Card Divination</label>
-        <label><input type="checkbox" name="study_interests" value="Own System"> My own system</label>
-      </div>
-    </fieldset>
-
-    <!-- Goals / experience -->
-    <label style="display:flex;flex-direction:column;gap:6px;margin-top:14px;">
-      <span>Goals & relevant experience</span>
-      <textarea name="goals" rows="5" placeholder="Tell us briefly what you seek to learn, your experience, and any accessibility needs." style="padding:10px;border:1px solid #cbd5e1;border-radius:10px;"></textarea>
-    </label>
-
-    <!-- Consent -->
-    <label style="display:flex;align-items:flex-start;gap:10px;margin-top:14px;">
-      <input type="checkbox" name="agree_ethics" required>
-      <span>I affirm I will honor SwamiG Institute ethics, Iwapele, the Laws of Maat and respect institute boundaries, and consent to processing my data for enrollment and scheduling. <b style="color:#ef4444">*</b></span>
-    </label>
-
-    <!-- Honeypot -->
-    <input type="text" name="_gotcha" style="display:none;">
-
-    <!-- Success message -->
-    <p id="sgi-status" aria-live="polite" style="color:#334155;margin-top:10px;"></p>
-
-    <!-- Submit -->
-    <div style="display:flex;gap:10px;margin-top:16px;">
-      <button type="submit" style="padding:10px 16px;border:0;border-radius:10px;background:#111827;color:white;cursor:pointer;">Submit application</button>
-    </div>
-  </form>
-</section>
-
-<script>
-  const form = document.getElementById('sgi-app');
-  const statusEl = document.getElementById('sgi-status');
-
-  form.addEventListener('submit', async (e) => {
-    e.preventDefault();
-    statusEl.textContent = "Submitting…";
-
-    const data = new FormData(form);
-
-    try {
-      const res = await fetch(form.action, {
-        method: "POST",
-        body: data,
-        headers: { Accept: "application/json" } // 👈 prevents redirect response
-      });
-
-      if (res.ok) {
-        statusEl.textContent = "✅ Submitted successfully! Check your email for confirmation.";
-        form.reset();
-      } else {
-        const errData = await res.json().catch(() => ({}));
-        statusEl.textContent =
-          errData.errors?.[0]?.message || "⚠️ Error submitting form. Please try again.";
-      }
-    } catch (err) {
-      console.error("Network error:", err);
-      statusEl.textContent =
-        "⚠️ Network error — your data was likely received by Formspree.";
-    }
-  });
-</script>
+    <p style="margin-top:25px;text-align:center;font-size:12px;color:#777;">
+      Governed by Irosun-Otura · © SwamiG Institute
+    </p>
+  </section>
+</body>
+</html>
