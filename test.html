@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>SwamiG Institute — Test Form</title>
+  <style>
+    :root{
+      --bg:#0b0b0f;
+      --ink:#f4f4fa;
+      --muted:#b5b5c4;
+      --accent:#bb66ff;
+      --accent-muted:rgba(187,102,255,0.18);
+    }
+    body{
+      background:var(--bg);
+      color:var(--ink);
+      font-family:ui-sans-serif,system-ui,Segoe UI,Roboto,Arial;
+      margin:0;
+      display:flex;
+      flex-direction:column;
+      align-items:center;
+      justify-content:center;
+      min-height:100vh;
+      padding:20px;
+    }
+    header{
+      text-align:center;
+      margin-bottom:24px;
+    }
+    header img{
+      width:72px;
+      height:72px;
+      border-radius:50%;
+    }
+    form{
+      background:#14141c;
+      padding:24px;
+      border-radius:12px;
+      width:100%;
+      max-width:420px;
+      box-shadow:0 0 20px rgba(0,0,0,.35);
+    }
+    label{
+      display:block;
+      margin-bottom:10px;
+      font-weight:600;
+    }
+    input,textarea{
+      width:100%;
+      padding:10px;
+      border-radius:8px;
+      border:1px solid #333;
+      background:#0f1118;
+      color:#fff;
+      margin-bottom:14px;
+    }
+    button{
+      background:var(--accent);
+      color:white;
+      border:none;
+      border-radius:8px;
+      padding:12px;
+      font-weight:600;
+      width:100%;
+    }
+    #response{
+      color:var(--accent);
+      margin-top:20px;
+      font-weight:600;
+      text-align:center;
+    }
+    footer{
+      margin-top:40px;
+      font-size:12px;
+      color:var(--muted);
+      text-align:center;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <a href="https://swamiginstitute.com">
+      <img src="SwamiG.gif" alt="SwamiG Institute Logo">
+    </a>
+    <h2>SwamiG Institute</h2>
+    <p>Modules of Enlightenment for the Diaspora</p>
+  </header>
+
+  <form id="testForm">
+    <label>
+      Full Name
+      <input name="name" placeholder="Your name" required>
+    </label>
+    <label>
+      Email
+      <input type="email" name="email" placeholder="you@example.com" required>
+    </label>
+    <label>
+      Message
+      <textarea name="message" rows="3" placeholder="Write a message..." required></textarea>
+    </label>
+    <button type="submit">Send Message</button>
+  </form>
+
+  <p id="response"></p>
+
+  <footer>© SwamiG Institute • Michigan nonprofit • 501(c)(3) recognition pending</footer>
+
+  <script>
+    const form = document.getElementById('testForm');
+    const responseEl = document.getElementById('response');
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      responseEl.textContent = "Sending...";
+
+      const data = Object.fromEntries(new FormData(form).entries());
+
+      try {
+        const res = await fetch("https://swamiginstitute.com/form", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(data)
+        });
+
+        if (res.ok) {
+          const text = await res.text();
+          responseEl.textContent = text || "✅ Message sent successfully!";
+          form.reset();
+        } else {
+          const error = await res.text();
+          responseEl.textContent = "⚠️ Error: " + error;
+        }
+      } catch (err) {
+        responseEl.textContent = "❌ Network error: " + err.message;
+      }
+    });
+  </script>
+</body>
+</html>
