@@ -1,142 +1,200 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>SwamiG Institute — Test Form</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>SwamiG Institute — Application Form</title>
+  <meta name="description" content="Modules of Enlightenment for the Diaspora — SwamiG Institute Application Form." />
   <style>
-    :root{
-      --bg:#0b0b0f;
-      --ink:#f4f4fa;
-      --muted:#b5b5c4;
-      --accent:#bb66ff;
-      --accent-muted:rgba(187,102,255,0.18);
+    body {
+      background: #0b0b0f;
+      color: #f4f4fa;
+      font-family: ui-sans-serif, system-ui, Segoe UI, Roboto, Arial;
+      margin: 0;
+      padding: 40px 16px;
+      display: flex;
+      justify-content: center;
     }
-    body{
-      background:var(--bg);
-      color:var(--ink);
-      font-family:ui-sans-serif,system-ui,Segoe UI,Roboto,Arial;
-      margin:0;
-      display:flex;
-      flex-direction:column;
-      align-items:center;
-      justify-content:center;
-      min-height:100vh;
-      padding:20px;
+    section {
+      width: 100%;
+      max-width: 840px;
+      background: #11131a;
+      padding: 28px;
+      border-radius: 16px;
+      border: 1px solid #1e293b;
+      box-shadow: 0 0 15px rgba(0, 0, 0, 0.35);
     }
-    header{
-      text-align:center;
-      margin-bottom:24px;
+    h1 {
+      margin: 10px 0 0;
     }
-    header img{
-      width:72px;
-      height:72px;
-      border-radius:50%;
+    h2 {
+      margin: 0 0 8px;
+      font-size: 28px;
+      line-height: 1.2;
     }
-    form{
-      background:#14141c;
-      padding:24px;
-      border-radius:12px;
-      width:100%;
-      max-width:420px;
-      box-shadow:0 0 20px rgba(0,0,0,.35);
+    p {
+      margin: 0 0 18px;
+      color: #94a3b8;
     }
-    label{
-      display:block;
-      margin-bottom:10px;
-      font-weight:600;
+    label {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
     }
-    input,textarea{
-      width:100%;
-      padding:10px;
-      border-radius:8px;
-      border:1px solid #333;
-      background:#0f1118;
-      color:#fff;
-      margin-bottom:14px;
+    input, select, textarea {
+      padding: 10px;
+      border: 1px solid #334155;
+      border-radius: 10px;
+      background: #0f1118;
+      color: #f4f4fa;
     }
-    button{
-      background:var(--accent);
-      color:white;
-      border:none;
-      border-radius:8px;
-      padding:12px;
-      font-weight:600;
-      width:100%;
+    button {
+      padding: 10px 16px;
+      border: 0;
+      border-radius: 10px;
+      background: #7c3aed;
+      color: #fff;
+      cursor: pointer;
     }
-    #response{
-      color:var(--accent);
-      margin-top:20px;
-      font-weight:600;
-      text-align:center;
-    }
-    footer{
-      margin-top:40px;
-      font-size:12px;
-      color:var(--muted);
-      text-align:center;
+    button:hover {
+      background: #8b5cf6;
     }
   </style>
 </head>
+
 <body>
-
-  <header>
-    <a href="https://swamiginstitute.com">
-      <img src="SwamiG.gif" alt="SwamiG Institute Logo">
+<section id="orisha-application">
+  <div style="text-align:center;margin-bottom:20px;">
+    <a href="https://swamiginstitute.com" title="app@swamiginstitute.com" style="text-decoration:none;color:inherit;">
+      <img src="SwamiG.gif" width="70" height="70" alt="SwamiG Institute" />
+      <h1>SwamiG Institute</h1>
     </a>
-    <h2>SwamiG Institute</h2>
     <p>Modules of Enlightenment for the Diaspora</p>
-  </header>
+    <p style="color:#a1a1aa;">Ifá • Iṣeṣẹ • Orisha | Divination Certification-oriented Training</p>
+  </div>
 
-  <form id="testForm">
-    <label>
-      Full Name
-      <input name="name" placeholder="Your name" required>
+  <h2>Application</h2>
+  <p>Complete this application to begin. Submissions are securely delivered and logged.</p>
+
+  <form id="sgi-app" action="https://formspree.io/f/mvgvwkye" method="POST">
+    <!-- Contact -->
+    <div style="display:grid;gap:14px;grid-template-columns:1fr 1fr;">
+      <label>
+        <span>Legal name <b style="color:#ef4444">*</b></span>
+        <input name="legal_name" required placeholder="First Last" autocomplete="name">
+      </label>
+      <label>
+        <span>Preferred name with meaning</span>
+        <input name="preferred_name" placeholder="If different">
+      </label>
+      <label>
+        <span>Email <b style="color:#ef4444">*</b></span>
+        <input name="email" type="email" required placeholder="you@example.com" autocomplete="email">
+      </label>
+      <label>
+        <span>Phone (WhatsApp ok)</span>
+        <input name="phone" placeholder="+1 (___) ___-____" autocomplete="tel">
+      </label>
+    </div>
+
+    <!-- Initiation details -->
+    <div style="display:grid;gap:14px;grid-template-columns:1fr 1fr;margin-top:14px;">
+      <label>
+        <span>Initiation role <b style="color:#ef4444">*</b></span>
+        <select name="role" required>
+          <option value="" selected disabled>Choose…</option>
+          <option>Oba</option>
+          <option>Queen Mother</option>
+          <option>Babalawo</option>
+          <option>Iyanifa</option>
+          <option>Babalorisa</option>
+          <option>Iyalorisa</option>
+          <option>Aborisha</option>
+          <option>Other</option>
+        </select>
+      </label>
+      <label>
+        <span>Primary Orisha</span>
+        <input name="primary_orisha" placeholder="e.g., Oshun, Ṣangó, Obatalá">
+      </label>
+      <label>
+        <span>Lineage / Ile <b style="color:#ef4444">*</b></span>
+        <input name="lineage" required placeholder="House / Ile">
+      </label>
+      <label>
+        <span>Oluwo / Iyalo/Oba name / Teacher</span>
+        <input name="teacher" placeholder="Name(s)">
+      </label>
+      <label>
+        <span>Initiation date</span>
+        <input name="initiation_date" type="date">
+      </label>
+      <label>
+        <span>Initiation location</span>
+        <input name="initiation_location" placeholder="City, Country">
+      </label>
+    </div>
+
+    <!-- Study Interests -->
+    <fieldset style="margin-top:14px;border:1px solid #1e293b;border-radius:12px;padding:12px;">
+      <legend style="padding:0 6px;color:#e2e8f0;">Study interests</legend>
+      <div style="display:grid;gap:10px;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));">
+        <label><input type="checkbox" name="study_interests" value="Merindilogun"> Merindilogun</label>
+        <label><input type="checkbox" name="study_interests" value="Orisha-Pele"> Orisha-Pele</label>
+        <label><input type="checkbox" name="study_interests" value="Obi-Orisha"> Obi Orisha</label>
+        <label><input type="checkbox" name="study_interests" value="Obi Abata"> Obi Abata</label>
+        <label><input type="checkbox" name="study_interests" value="Four Cowrie"> Four Cowrie</label>
+        <label><input type="checkbox" name="study_interests" value="Card Divination"> Card Divination</label>
+        <label><input type="checkbox" name="study_interests" value="Own System"> My own system</label>
+      </div>
+    </fieldset>
+
+    <!-- Goals / experience -->
+    <label style="margin-top:14px;">
+      <span>Goals & relevant experience</span>
+      <textarea name="goals" rows="5" placeholder="Tell us briefly what you seek to learn, your experience, and any accessibility needs."></textarea>
     </label>
-    <label>
-      Email
-      <input type="email" name="email" placeholder="you@example.com" required>
+
+    <!-- Consent -->
+    <label style="display:flex;align-items:flex-start;gap:10px;margin-top:14px;">
+      <input type="checkbox" name="agree_ethics" required>
+      <span>I affirm I will honor SwamiG Institute ethics, Iwapele, the Laws of Maat and respect institute boundaries, and consent to processing my data for enrollment and scheduling. <b style="color:#ef4444">*</b></span>
     </label>
-    <label>
-      Message
-      <textarea name="message" rows="3" placeholder="Write a message..." required></textarea>
-    </label>
-    <button type="submit">Send Message</button>
+
+    <!-- Honeypot -->
+    <input type="text" name="_gotcha" style="display:none;">
+
+    <!-- Success message -->
+    <p id="sgi-status" aria-live="polite" style="color:#a1a1aa;margin-top:10px;"></p>
+
+    <!-- Submit -->
+    <div style="display:flex;gap:10px;margin-top:16px;">
+      <button type="submit">Submit application</button>
+    </div>
   </form>
+</section>
 
-  <p id="response"></p>
+<script>
+  const form = document.getElementById('sgi-app');
+  const statusEl = document.getElementById('sgi-status');
 
-  <footer>© SwamiG Institute • Michigan nonprofit • 501(c)(3) recognition pending</footer>
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    statusEl.textContent = "Submitting…";
+    const formData = new FormData(form);
 
-  <script>
-    const form = document.getElementById('testForm');
-    const responseEl = document.getElementById('response');
-
-    form.addEventListener('submit', async (e) => {
-      e.preventDefault();
-      responseEl.textContent = "Sending...";
-
-      const data = Object.fromEntries(new FormData(form).entries());
-
-      try {
-        const res = await fetch("https://swamiginstitute.com/form", {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify(data)
-        });
-
-        if (res.ok) {
-          const text = await res.text();
-          responseEl.textContent = text || "✅ Message sent successfully!";
-          form.reset();
-        } else {
-          const error = await res.text();
-          responseEl.textContent = "⚠️ Error: " + error;
-        }
-      } catch (err) {
-        responseEl.textContent = "❌ Network error: " + err.message;
+    try {
+      const res = await fetch(form.action, { method: 'POST', body: formData });
+      if (res.ok) {
+        statusEl.textContent = "✅ Submitted successfully! Please check your email for confirmation.";
+        form.reset();
+      } else {
+        statusEl.textContent = "⚠️ Error submitting form. Please try again later.";
       }
-    });
-  </script>
+    } catch (err) {
+      statusEl.textContent = "⚠️ Network error. Please retry.";
+    }
+  });
+</script>
 </body>
 </html>
