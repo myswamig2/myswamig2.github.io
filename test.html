@@ -1,25 +1,99 @@
 <!DOCTYPE html>
-<html>
-  <body style="font-family:sans-serif;padding:40px;">
-    <h2>SwamiG Worker Email Test</h2>
-    <form id="form">
-      <input name="name" placeholder="Name" required><br><br>
-      <input name="email" type="email" placeholder="Email" required><br><br>
-      <textarea name="message" placeholder="Message"></textarea><br><br>
-      <button type="submit">Send</button>
-    </form>
-    <pre id="output" style="background:#111;color:#0f0;padding:10px;"></pre>
-    <script>
-      document.getElementById("form").addEventListener("submit", async e => {
-        e.preventDefault();
-        const data = Object.fromEntries(new FormData(e.target).entries());
-        const res = await fetch("https://swamiginstitute.com", {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify(data)
-        });
-        document.getElementById("output").textContent = await res.text();
-      });
-    </script>
-  </body>
-</html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>SwamiG Institute — Worker Email Test</title>
+  <meta name="description" content="Test form submission via Cloudflare Worker and MailChannels for SwamiG Institute." />
+  <style>
+    :root {
+      --bg: #0b0b0f;
+      --ink: #f4f4fa;
+      --muted: #bfc3d1;
+      --card: #14141c;
+      --accent: #bb66ff;
+      --accent-ring: rgba(187,102,255,.35);
+    }
+    body {
+      background: var(--bg);
+      color: var(--ink);
+      font-family: ui-sans-serif, system-ui, Segoe UI, Roboto, Arial;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      margin: 0;
+      text-align: center;
+    }
+    form {
+      background: var(--card);
+      padding: 32px;
+      border-radius: 14px;
+      width: 90%;
+      max-width: 420px;
+      box-shadow: 0 0 20px rgba(0,0,0,.3);
+    }
+    h2 {
+      margin-bottom: 20px;
+      color: var(--accent);
+    }
+    label { display: block; text-align: left; margin-top: 12px; margin-bottom: 6px; font-weight: 600; }
+    input, textarea {
+      width: 100%;
+      padding: 10px;
+      border-radius: 8px;
+      border: 1px solid #333;
+      background: #0f1118;
+      color: var(--ink);
+      font-size: 15px;
+    }
+    button {
+      margin-top: 20px;
+      width: 100%;
+      padding: 12px;
+      border: none;
+      border-radius: 8px;
+      background: var(--accent);
+      color: #fff;
+      font-weight: bold;
+      cursor: pointer;
+      font-size: 16px;
+    }
+    button:hover {
+      box-shadow: 0 0 0 4px var(--accent-ring);
+    }
+    pre {
+      margin-top: 25px;
+      background: #1a1a22;
+      padding: 12px;
+      border-radius: 8px;
+      width: 90%;
+      max-width: 420px;
+      text-align: left;
+      color: #9ef59f;
+      font-size: 14px;
+      overflow-x: auto;
+    }
+  </style>
+</head>
+<body>
+  <h2>SwamiG Worker Email Test</h2>
+
+  <form id="formTest">
+    <label for="name">Full Name</label>
+    <input id="name" name="name" placeholder="Your full name" required />
+
+    <label for="email">Email Address</label>
+    <input id="email" name="email" type="email" placeholder="you@example.com" required />
+
+    <label for="message">Message</label>
+    <textarea id="message" name="message" placeholder="Write your message..." rows="4"></textarea>
+
+    <button type="submit">Send Test Email</button>
+  </form>
+
+  <pre id="result">Awaiting submission...</pre>
+
+  <script>
+    document.getElementById("form
