@@ -1,99 +1,87 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>SwamiG Institute — Worker Email Test</title>
-  <meta name="description" content="Test form submission via Cloudflare Worker and MailChannels for SwamiG Institute." />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>SwamiG Form Test</title>
   <style>
-    :root {
-      --bg: #0b0b0f;
-      --ink: #f4f4fa;
-      --muted: #bfc3d1;
-      --card: #14141c;
-      --accent: #bb66ff;
-      --accent-ring: rgba(187,102,255,.35);
-    }
     body {
-      background: var(--bg);
-      color: var(--ink);
-      font-family: ui-sans-serif, system-ui, Segoe UI, Roboto, Arial;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      height: 100vh;
-      margin: 0;
-      text-align: center;
+      background:#0b0b0f;
+      color:#eaeaf2;
+      font-family:system-ui,Segoe UI,Roboto,Arial;
+      display:flex;
+      flex-direction:column;
+      align-items:center;
+      justify-content:center;
+      height:100vh;
+      margin:0;
     }
     form {
-      background: var(--card);
-      padding: 32px;
-      border-radius: 14px;
-      width: 90%;
-      max-width: 420px;
-      box-shadow: 0 0 20px rgba(0,0,0,.3);
+      background:#14141c;
+      padding:24px;
+      border-radius:12px;
+      width:90%;
+      max-width:420px;
+      box-shadow:0 0 20px rgba(0,0,0,.35);
     }
-    h2 {
-      margin-bottom: 20px;
-      color: var(--accent);
+    label {
+      display:block;
+      margin-bottom:10px;
+      font-weight:600;
     }
-    label { display: block; text-align: left; margin-top: 12px; margin-bottom: 6px; font-weight: 600; }
     input, textarea {
-      width: 100%;
-      padding: 10px;
-      border-radius: 8px;
-      border: 1px solid #333;
-      background: #0f1118;
-      color: var(--ink);
-      font-size: 15px;
+      width:100%;
+      padding:10px;
+      border-radius:8px;
+      border:1px solid #333;
+      background:#0f1118;
+      color:#fff;
+      margin-bottom:14px;
     }
     button {
-      margin-top: 20px;
-      width: 100%;
-      padding: 12px;
-      border: none;
-      border-radius: 8px;
-      background: var(--accent);
-      color: #fff;
-      font-weight: bold;
-      cursor: pointer;
-      font-size: 16px;
-    }
-    button:hover {
-      box-shadow: 0 0 0 4px var(--accent-ring);
-    }
-    pre {
-      margin-top: 25px;
-      background: #1a1a22;
-      padding: 12px;
-      border-radius: 8px;
-      width: 90%;
-      max-width: 420px;
-      text-align: left;
-      color: #9ef59f;
-      font-size: 14px;
-      overflow-x: auto;
+      background:#bb66ff;
+      color:white;
+      border:none;
+      border-radius:8px;
+      padding:12px;
+      font-weight:600;
+      width:100%;
     }
   </style>
 </head>
 <body>
-  <h2>SwamiG Worker Email Test</h2>
+  <h2>SwamiG Institute — Test Form</h2>
 
-  <form id="formTest">
-    <label for="name">Full Name</label>
-    <input id="name" name="name" placeholder="Your full name" required />
-
-    <label for="email">Email Address</label>
-    <input id="email" name="email" type="email" placeholder="you@example.com" required />
-
-    <label for="message">Message</label>
-    <textarea id="message" name="message" placeholder="Write your message..." rows="4"></textarea>
-
-    <button type="submit">Send Test Email</button>
+  <form id="testForm">
+    <label>Name <input name="name" required></label>
+    <label>Email <input type="email" name="email" required></label>
+    <label>Message <textarea name="message" rows="3" required></textarea></label>
+    <button type="submit">Send</button>
   </form>
 
-  <pre id="result">Awaiting submission...</pre>
+  <p id="response" style="margin-top:20px;color:#bb66ff;"></p>
 
   <script>
-    document.getElementById("form
+    const form = document.getElementById('testForm');
+    const responseEl = document.getElementById('response');
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const data = Object.fromEntries(new FormData(form));
+      responseEl.textContent = "Sending...";
+
+      try {
+        const res = await fetch("https://swamiginstitute.com/form", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(data),
+        });
+        const text = await res.text();
+        responseEl.textContent = text;
+      } catch (err) {
+        responseEl.textContent = "Error: " + err.message;
+      }
+    });
+  </script>
+</body>
+</html>
