@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+  <body style="font-family:sans-serif;padding:40px;">
+    <h2>SwamiG Worker Test</h2>
+    <form id="testForm">
+      <input name="name" placeholder="Your name" required><br><br>
+      <input name="email" type="email" placeholder="Your email" required><br><br>
+      <textarea name="message" placeholder="Message"></textarea><br><br>
+      <button>Send Test</button>
+    </form>
+    <pre id="result" style="background:#111;color:#0f0;padding:10px;margin-top:20px;"></pre>
+    <script>
+      document.querySelector("#testForm").addEventListener("submit", async e => {
+        e.preventDefault();
+        const data = Object.fromEntries(new FormData(e.target).entries());
+        const res = await fetch("https://swamiginstitute.com", {
+          method: "POST",
+          headers: {"Content-Type":"application/json"},
+          body: JSON.stringify(data)
+        });
+        document.querySelector("#result").textContent = await res.text();
+      });
+    </script>
+  </body>
+</html>
