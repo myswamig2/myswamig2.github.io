@@ -76,7 +76,11 @@
   <h2>Application</h2>
   <p>Complete this application to begin. Submissions are securely delivered and logged.</p>
 
-  <form id="sgi-app" action="https://formspree.io/f/mvgvwkye" method="POST">
+  <!-- ✅ Formspree direct form (no JavaScript) -->
+  <form action="https://formspree.io/f/mvgvwkye" method="POST">
+    <!-- Redirect to thankyou.html after submission -->
+    <input type="hidden" name="_redirect" value="https://swamiginstitute.com/thankyou.html">
+
     <!-- Contact -->
     <div style="display:grid;gap:14px;grid-template-columns:1fr 1fr;">
       <label>
@@ -164,37 +168,11 @@
     <!-- Honeypot -->
     <input type="text" name="_gotcha" style="display:none;">
 
-    <!-- Success message -->
-    <p id="sgi-status" aria-live="polite" style="color:#a1a1aa;margin-top:10px;"></p>
-
     <!-- Submit -->
     <div style="display:flex;gap:10px;margin-top:16px;">
       <button type="submit">Submit application</button>
     </div>
   </form>
 </section>
-
-<script>
-  const form = document.getElementById('sgi-app');
-  const statusEl = document.getElementById('sgi-status');
-
-  form.addEventListener('submit', async (e) => {
-    e.preventDefault();
-    statusEl.textContent = "Submitting…";
-    const formData = new FormData(form);
-
-    try {
-      const res = await fetch(form.action, { method: 'POST', body: formData });
-      if (res.ok) {
-        statusEl.textContent = "✅ Submitted successfully! Please check your email for confirmation.";
-        form.reset();
-      } else {
-        statusEl.textContent = "⚠️ Error submitting form. Please try again later.";
-      }
-    } catch (err) {
-      statusEl.textContent = "⚠️ Network error. Please retry.";
-    }
-  });
-</script>
 </body>
 </html>
